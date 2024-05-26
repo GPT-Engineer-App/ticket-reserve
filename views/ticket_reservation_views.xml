@@ -1,0 +1,47 @@
+<!-- views/ticket_reservation_views.xml -->
+<odoo>
+    <record id="view_ticket_reservation_form" model="ir.ui.view">
+        <field name="name">ticket.reservation.form</field>
+        <field name="model">ticket.reservation</field>
+        <field name="arch" type="xml">
+            <form string="Ticket Reservation">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="event_date"/>
+                        <field name="customer_name"/>
+                        <field name="number_of_tickets"/>
+                        <field name="state" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button string="Confirm" type="object" name="action_confirm" states="draft" class="btn-primary"/>
+                        <button string="Cancel" type="object" name="action_cancel" states="draft,confirmed" class="btn-secondary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ticket_reservation_tree" model="ir.ui.view">
+        <field name="name">ticket.reservation.tree</field>
+        <field name="model">ticket.reservation</field>
+        <field name="arch" type="xml">
+            <tree string="Ticket Reservation">
+                <field name="name"/>
+                <field name="event_date"/>
+                <field name="customer_name"/>
+                <field name="number_of_tickets"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_ticket_reservation" model="ir.actions.act_window">
+        <field name="name">Ticket Reservations</field>
+        <field name="res_model">ticket.reservation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_ticket_reservation_root" name="Ticket Reservations"/>
+    <menuitem id="menu_ticket_reservation" name="Reservations" parent="menu_ticket_reservation_root" action="action_ticket_reservation"/>
+</odoo>

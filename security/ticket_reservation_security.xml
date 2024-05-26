@@ -1,0 +1,6 @@
+<!-- security/ticket_reservation_security.xml -->
+<odoo>
+    <record id="group_ticket_reservation_user" model="res.groups">
+        <field name="name">Ticket Reservation User</field>
+    </record>
+</odoo>
